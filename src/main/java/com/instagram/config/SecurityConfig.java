@@ -29,6 +29,7 @@ public class SecurityConfig{
 			.loginPage("/auth/signin")
 			.loginProcessingUrl("/auth/signin") 
 			.defaultSuccessUrl("/");
+		return http.build();
 	}
 
 }
