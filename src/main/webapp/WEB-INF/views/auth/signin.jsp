@@ -19,7 +19,7 @@
 		<main class="loginMain">
 			<section class="login">
 				<article class="login__form__container">
-					<div class="login_form">
+					<div class="login__form">
 						<h1>
 							<img src="/images/logo.jpg" alt="로고">
 						</h1>
