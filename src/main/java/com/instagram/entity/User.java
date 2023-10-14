@@ -55,8 +55,8 @@ public class User {
 	// 회원의 프로필사진이 저장된 서버내부의 주소값을 저장
 	private String profileImage;
 	
-	//모든 회원의 권한값을user로 설정
-	@ColumnDefault("'USER'")
+	//모든 회원의 권한값을user로 설정, dto에 권한값을 줘서 entity에서는 주석처리
+	//@ColumnDefault("'USER'")
 	private String role;
 	
 	@CreationTimestamp
