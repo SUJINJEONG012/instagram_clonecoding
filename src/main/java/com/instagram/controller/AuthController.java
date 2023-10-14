@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -11,8 +12,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.instagram.dto.SignUpDto;
+import com.instagram.service.AuthService;
+import com.instagram.util.Script;
+
 @Controller
 public class AuthController {
+	
+	@Autowired
+	private AuthService authService; 
 
 	@GetMapping("/auth/signin")
 	public String signinForm() {
@@ -24,16 +32,19 @@ public class AuthController {
 		return "auth/signup";
 	}
 	
-	//Errors는 반드시 Request객체 바로뒤에 위치해야함
-		@PostMapping("/auth/signup")
-		public @ResponseBody String signup(@Valid SignupDto signupDto, Errors errors, Model model) {
+	/*
+	 * Errors는 반드시 Request객체 바로뒤에 위치해야함
+	 * errors.hasErrors()는 유효성검사에 실패했을시 true값을 반환한다
+	 * */
+	@PostMapping("/auth/signup")
+		public @ResponseBody String signup(@Valid SignUpDto signupDto, Errors errors, Model model) {
 			//유효성 검사 실패
 			if(errors.hasErrors()) {
 				//사용자로부터 입력받은 데이터를 유지하기 위함
 				model.addAttribute("signupDto", signupDto);
 				
 				//유효성검사에 실패한 필드와 메시지를 저장
-				Map<String, String> validResult = authService.validHandling(errors);
+				Map<String, String> validResult = authService.validHanding(errors);
 				
 				//필드를 key값으로 에러메시지 저장
 				for(String key : validResult.keySet()) {
@@ -58,5 +69,6 @@ public class AuthController {
 			
 			//이때 회원가입이 성공하였다는 메시지 출력 후 로그인페이지 이동
 			return Script.locationMsg("/auth/signin", "회원가입에 성공하셨습니다", model);
+			
 		}
 }
