@@ -32,6 +32,12 @@ public class AuthController {
 		return "auth/signup";
 	}
 	
+	//로그인실패시
+	@GetMapping("/auth/failed")
+	public String failedSignin(Model model) {
+		return Script.locationMsg("/auth/signin", "아이디 또는 비밀번호를 잘못 입력하셨습니다.", model);
+	}
+	
 	/*
 	 * Errors는 반드시 Request객체 바로뒤에 위치해야함
 	 * errors.hasErrors()는 유효성검사에 실패했을시 true값을 반환한다
@@ -67,7 +73,7 @@ public class AuthController {
 			authService.userSignup(signupDto);
 			
 			//이때 회원가입이 성공하였다는 메시지 출력 후 로그인페이지 이동
-			//return Script.locationMsg("/auth/signin", "회원가입에 성공하셨습니다.", model);
-			return "auth/signin";
+			return Script.locationMsg("/auth/signin", "회원가입에 성공하셨습니다.", model);
+			//return "auth/signin";
 		}
 }
