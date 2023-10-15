@@ -15,7 +15,7 @@ public class SignUpDto {
 	private String username;
 	
 	@NotBlank(message="비밀번호를 입력해주세요")
-	@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z]).{8,16}\", message = \"최소 하나의 문자 및 숫자를 포함한<br>8~16자이여야 합니다")
+	//@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z]).{8,16}\", message = \"최소 하나의 문자 및 숫자를 포함한<br>8~16자이여야 합니다")
 	private String password;
 	
 	@NotBlank

@@ -37,7 +37,7 @@ public class AuthController {
 	 * errors.hasErrors()는 유효성검사에 실패했을시 true값을 반환한다
 	 * */
 	@PostMapping("/auth/signup")
-		public @ResponseBody String signup(@Valid SignUpDto signupDto, Errors errors, Model model) {
+		public String signup(@Valid SignUpDto signupDto, Errors errors, Model model) {
 			//유효성 검사 실패
 			if(errors.hasErrors()) {
 				//사용자로부터 입력받은 데이터를 유지하기 위함
@@ -51,7 +51,6 @@ public class AuthController {
 					System.out.println(key + validResult.get(key));
 					model.addAttribute(key, validResult.get(key));
 				}
-				
 				
 				//사용자로부터 입력받은 데이터와 에러메시지를 가지고 회원가입페이지로 다시이동 
 				return "auth/signup";

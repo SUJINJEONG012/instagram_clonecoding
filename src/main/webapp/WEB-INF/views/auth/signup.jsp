@@ -33,7 +33,7 @@
 						<span>${valid_passoword}</span>
 						<input type="email" name="email" value="${signupDto.email}" placeholder="이메일" required="required">
 						<span>${valid_email}</span>
-						<input type="text" name="name" value="${signupDto.email}" placeholder="이름" required="required">
+						<input type="text" name="name" value="${signupDto.name}" placeholder="이름" required="required">
 						<span>${valid_name}</span>
 						<button>가입</button>
 						</form>
