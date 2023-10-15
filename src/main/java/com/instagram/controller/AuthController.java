@@ -67,7 +67,7 @@ public class AuthController {
 			authService.userSignup(signupDto);
 			
 			//이때 회원가입이 성공하였다는 메시지 출력 후 로그인페이지 이동
-			return Script.locationMsg("/auth/signin", "회원가입에 성공하셨습니다", model);
-			
+			//return Script.locationMsg("/auth/signin", "회원가입에 성공하셨습니다.", model);
+			return "auth/signin";
 		}
 }
