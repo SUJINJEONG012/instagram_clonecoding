@@ -1,35 +1,48 @@
 package com.instagram.config.auth;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.instagram.entity.User;
 
 import lombok.Data;
 
 @Data
-public class CustomUserDetails implements UserDetails  {
+public class PrincipalDetails implements UserDetails  {
 	
-	private String username;
-	private String password;
-	private String role;
+	private static final long serialVersionUID = 1L;
+	
+	private User user;
+	private Map<String, Object> attributes;
+	
+	public PrincipalDetails(User user) {
+		this.user = user;
+	}
+	
+	public PrincipalDetails(User user, Map<String, Object> attributes) {
+		this.user = user;
+	}
 	
 	//계정이 가지고 있는 권한을 리턴
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {	
-		return Collections.singletonList(new SimpleGrantedAuthority(this.role));
+		Collection<GrantedAuthority> collector = new ArrayList<>();
+		collector.add(()->{ return user.getRole();});
+		return collector;
 	}
-
+	
 	@Override
 	public String getPassword() {
-		return this.password;
+		return user.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return this.username;
+		return user.getUsername();
 	}
 
 	//계정이 만료되었는지를 리턴 : true : 만료되지 않음
@@ -55,6 +68,7 @@ public class CustomUserDetails implements UserDetails  {
 	public boolean isEnabled() {
 		return true;
 	}
+	
 
 	
 }
