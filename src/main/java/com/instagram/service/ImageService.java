@@ -25,6 +25,7 @@ public class ImageService {
 
 	private final ImageRepository imageRepository;
 	
+	
 	@Transactional(readOnly = true) 
 	public List<Image> 인기사진(){
 		return imageRepository.mPopular();
@@ -36,7 +37,7 @@ public class ImageService {
 	
 	
 	@Transactional
-	public void 사진업로드(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
+	public void 사진1111업로드(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
 		UUID uuid = UUID.randomUUID(); // uuid
 		String imageFileName = uuid+"_"+imageUploadDto.getFile().getOriginalFilename(); // 1.jpg
 		System.out.println("이미지 파일이름 : "+imageFileName);
