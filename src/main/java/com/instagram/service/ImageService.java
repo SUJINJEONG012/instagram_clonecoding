@@ -1,17 +1,20 @@
 package com.instagram.service;
 
-import java.awt.Image;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.instagram.config.auth.PrincipalDetails;
 import com.instagram.dto.ImageUploadDto;
+import com.instagram.entity.Image;
 import com.instagram.repository.ImageRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -26,6 +29,7 @@ public class ImageService {
 	public List<Image> 인기사진(){
 		return imageRepository.mPopular();
 	}
+	
 	
 	@Value("${file.path}")
 	private String uploadFolder;

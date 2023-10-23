@@ -1,6 +1,5 @@
 package com.instagram.controller;
 
-import java.awt.Image;
 import java.util.List;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.instagram.config.auth.PrincipalDetails;
 import com.instagram.dto.ImageUploadDto;
+import com.instagram.entity.Image;
 import com.instagram.handler.CustomValidationException;
 import com.instagram.service.ImageService;
 
