@@ -33,10 +33,7 @@ public class AuthController {
 		return "auth/signup";
 	}
 	
-	@GetMapping({"/","post/story"})
-	public String story() {
-		return "post/story";
-	}
+	
 	
 	//로그인실패시
 	@GetMapping("/auth/failed")
