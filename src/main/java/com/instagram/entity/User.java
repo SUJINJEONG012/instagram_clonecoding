@@ -1,27 +1,31 @@
 package com.instagram.entity;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
+@Data
 @Entity
 public class User {
 
@@ -30,7 +34,7 @@ public class User {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(length =50, unique = true, nullable =false)
+	@Column(length =100, unique = true, nullable =false)
 	private String username;
 	
 	// null값 허용안함
@@ -47,7 +51,8 @@ public class User {
 	
 	@Column(nullable = false)
 	private String name;
-	
+	private String website;
+	private String bio; //자기소개
 	private String email;
 	private String phone;
 	private String gender;
@@ -59,7 +64,30 @@ public class User {
 	//@ColumnDefault("'USER'")
 	private String role;
 	
+	/* 나는 연관관계의 주인이 아니다. 그러므로 테이블에 칼럼을 만들지마
+	 * User를 select할 때 해당 user id로 등록된  image들을 다 가져와.
+	 * Lazy = 
+	 * Eager =
+	 * .*/
+	@OneToMany(mappedBy ="user", fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"user"})
+	private List<Image> images;
+	
 	@CreationTimestamp
-	private Timestamp createDate;
+	private LocalDateTime createDate;
+	
+	@PrePersist
+	public void createDate() {
+		this.createDate = LocalDateTime.now();
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", websites="
+				+ website + ", bio=" + bio + ", email=" + email + ", phone=" + phone + ", gender=" + gender
+				+ ", profileImage=" + profileImage + ", role=" + role + ", images=" + images + ", createDate="
+				+ createDate + "]";
+	}
+	
 	
 }

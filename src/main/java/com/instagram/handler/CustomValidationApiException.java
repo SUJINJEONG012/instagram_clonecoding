@@ -2,7 +2,7 @@ package com.instagram.handler;
 
 import java.util.Map;
 
-public class CustomValidationException extends RuntimeException{
+public class CustomValidationApiException extends RuntimeException{
 
 	/**
 	 * 
@@ -11,7 +11,7 @@ public class CustomValidationException extends RuntimeException{
 
 	private Map<String, String > errorMap;
 	
-	public CustomValidationException(String message, Map<String, String> errorMap) {
+	public CustomValidationApiException(String message) {
 		super(message);
 		this.errorMap =  errorMap;
 	}

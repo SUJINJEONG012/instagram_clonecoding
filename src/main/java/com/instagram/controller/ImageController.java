@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.instagram.config.auth.PrincipalDetails;
 import com.instagram.dto.ImageUploadDto;
 import com.instagram.entity.Image;
-import com.instagram.handler.CustomValidationException;
+import com.instagram.handler.CustomValidationApiException;
 import com.instagram.service.ImageService;
 
 import lombok.RequiredArgsConstructor;

@@ -14,44 +14,28 @@ import com.instagram.dto.SignUpDto;
 import com.instagram.entity.User;
 import com.instagram.repository.UserRepository;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class AuthService {
 
-	@Autowired
-	private UserRepository userRepository;
-	
-	@Autowired
-	BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final  UserRepository userRepository;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	
-	/*
-	 * Errorss는 반드시 @Valid를 선언한Request객체 바로 뒤에 와야한다.
-	 * 
-	 * 
-	 * */
 	@Transactional
-	public Map<String, String> validHanding(Errors errors){
-		Map<String, String> validResult = new HashMap<>();
-		for(FieldError error : errors.getFieldErrors()) {
-			validResult.put("valid_"+error.getField(), error.getDefaultMessage());
-		}
-		return validResult;		
+	public User 회원가입(User user) throws RuntimeException {
+		//회원가입 진행
+		String rawPassword = user.getPassword();
+		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+		user.setPassword(encPassword);
+		user.setRole("ROLE_USER");
+		User userEntity = null;
+		userEntity = userRepository.save(user);
+		
+		return userEntity;
 	}
-	
-	
-	// 유효성검사로는 중복된값을 확인할 수 없기 때문에 dto로 username을 뽑아 db에 해당아이디가 있는지 확인
-	@Transactional
-	public boolean findUser(String username) {
-		return userRepository.existsByUsername(username);
-	}
-	
-	public void userSignup(SignUpDto signupDto) {
-		String encPassword = bCryptPasswordEncoder.encode(signupDto.getPassword());
-		signupDto.setPassword(encPassword);
-		User user = signupDto.toEntity();
-		userRepository.save(user);
-	}
-	
 	
 	
 }
