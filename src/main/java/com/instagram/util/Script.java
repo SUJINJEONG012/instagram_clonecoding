@@ -3,19 +3,15 @@ package com.instagram.util;
 import org.springframework.ui.Model;
 
 public class Script {
-
-
-	public static String locationMsg(String locationUrl, String msg, Model model) {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("<script>");
-		stringBuilder.append("alert('"+msg+"');");
-		stringBuilder.append("location.href='"+locationUrl+"';");
-		stringBuilder.append("</script>");
-		stringBuilder.toString();
-		model.addAttribute("locationMsg",stringBuilder);
-		return "util/locationMsg";
+	
+	public static String back(String msg) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("<script>");
+		sb.append("alert('"+msg+"');");
+		sb.append("history.back();");
+		sb.append("</script>");
+		return sb.toString();
 	}
-
 	
 }
 
