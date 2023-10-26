@@ -49,7 +49,7 @@ public class AuthController {
 		public String signup(@Valid SignUpDto signupDto, BindingResult bindingResult) {
 			 User user = signupDto.toEntity();
 			 authService.회원가입(user);
-			 System.out.println( "ddddddddddddd" + user);
+			 System.out.println( "@@@@@@@@@ddddddddddddd" + user);
 			 return "auth/signin";
 					
 		}

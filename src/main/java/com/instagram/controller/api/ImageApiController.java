@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.instagram.config.auth.PrincipalDetails;
+import com.instagram.dto.CMRespDto;
 import com.instagram.entity.Image;
 import com.instagram.service.ImageService;
 
@@ -25,7 +26,7 @@ public class ImageApiController {
 	@GetMapping("/api/image")
 	public ResponseEntity<?> imageStory(@AuthenticationPrincipal PrincipalDetails principalDetails, @PageableDefault(size=3) Pageable pageable){
 		Page<Image> images = imageService.이미지스토리(principalDetails.getUser().getId(), pageable);
-		return new ResponseEntity<>(new CMResponse<>(1,"성공", images), HttpStatus.OK);
+		return new ResponseEntity<>(new CMRespDto<>(1,"성공", images), HttpStatus.OK);
 	}
 	
 }

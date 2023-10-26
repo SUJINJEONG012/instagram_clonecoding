@@ -1,11 +1,20 @@
 package com.instagram.service;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.instagram.dto.UserProfileDto;
 import com.instagram.entity.User;
+import com.instagram.handler.CustomApiException;
+import com.instagram.handler.CustomException;
 import com.instagram.handler.CustomValidationApiException;
 import com.instagram.repository.UserRepository;
 
@@ -18,8 +27,51 @@ public class UserService {
 	private final UserRepository userRepository;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+	
 	@Value("${file.path}")
 	private String uploadFolder;
+	
+	@Transactional
+	public User 회원프로필사진변경(int principalId, MultipartFile profileImageFile) {
+		UUID uuid = UUID.randomUUID();
+		String imageFileName = uuid+"_"+profileImageFile.getOriginalFilename();
+		System.out.println("이미지 파일이름 : "  + imageFileName);
+		
+		Path imageFilePath = Paths.get(uploadFolder+imageFileName);
+		
+		//예외가 발생할 수 있다.
+		try {
+			Files.write(imageFilePath, profileImageFile.getBytes());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		User userEntity = userRepository.findById(principalId).orElseThrow(()->{
+			return new CustomApiException("유저를 찾을 수 없습니다.");
+		});
+				
+		return userEntity;
+	}
+	
+	
+	public UserProfileDto 회원프로필(int pageUserId, int principalId) {
+		UserProfileDto dto = new UserProfileDto();
+		
+		//select  * from image where userId = :userId;
+		User userEntity = userRepository.findById(pageUserId).orElseThrow(()->{
+			return new CustomException("해당 프로필 페이지는 없는 페이지입니다.");
+		});
+		
+		dto.setUser(userEntity);
+		dto.setPageOwnerStatus(pageUserId == principalId);
+		dto.setImagecount(userEntity.getImages().size());
+		
+		
+		return dto;
+	}
+	
+	
+	
 
 	@Transactional
 	public User 회원수정(int id, User user) {
@@ -39,4 +91,6 @@ public class UserService {
 				userEntity.setGender(user.getGender());
 				return userEntity;
 		}
+
+
 }
