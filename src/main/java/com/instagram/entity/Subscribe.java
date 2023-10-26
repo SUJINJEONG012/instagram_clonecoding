@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Table(uniqueConstraints = {
 		@UniqueConstraint(name ="subscribe_uk", columnNames = {"fromUserId","toUserId"})
 })
-public class subscribe {
+public class Subscribe {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

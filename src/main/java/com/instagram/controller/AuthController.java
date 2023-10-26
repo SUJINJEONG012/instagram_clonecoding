@@ -35,11 +35,11 @@ public class AuthController {
 	
 	
 	
-	//로그인실패시
-	@GetMapping("/auth/failed")
-	public String failedSignin(Model model) {
-		return Script.locationMsg("/auth/signin", "아이디 또는 비밀번호를 잘못 입력하셨습니다.", model);
-	}
+//	//로그인실패시
+//	@GetMapping("/auth/failed")
+//	public String failedSignin(Model model) {
+//		return Script.locationMsg("/auth/signin", "아이디 또는 비밀번호를 잘못 입력하셨습니다.", model);
+//	}
 	
 	/*
 	 * Errors는 반드시 Request객체 바로뒤에 위치해야함
