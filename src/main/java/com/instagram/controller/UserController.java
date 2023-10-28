@@ -23,6 +23,8 @@ public class UserController {
 	
 		UserProfileDto dto = userService.회원프로필(pageUserId, principalDetails.getUser().getId());
 		model.addAttribute("dto", dto);
+		System.out.println("@@@@@ 회원프로필 : " + principalDetails.getUser());
+		
 		return "user/profile"; 
 	}
 	

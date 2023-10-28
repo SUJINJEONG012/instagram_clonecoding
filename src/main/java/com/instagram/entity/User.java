@@ -34,11 +34,10 @@ public class User {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(length =100, unique = true, nullable =false)
+	@Column(length =100, unique = true)
 	private String username;
 	
 	// null값 허용안함
-	@Column(nullable =false)
 	/* 
 	 * 클라이언트와 서버간의 통신을 통해 user개체가 전달되면 패스워닥 노출되는 문제가 생김.
 	 * @Jsonlgnorre 어노테이션을 붙이면 user개체가 전달될때 패스워드 필드를 제외하기 때문에 문제를 해결 할 수 있음
@@ -46,7 +45,7 @@ public class User {
 	 * @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)를 붙이면 요청시에는
 	 * 해당 필드값을 제외하여 전달해주고 validation 체크도 가능하다
 	*/
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@Column(nullable =false)
 	private String password;
 	
 	@Column(nullable = false)

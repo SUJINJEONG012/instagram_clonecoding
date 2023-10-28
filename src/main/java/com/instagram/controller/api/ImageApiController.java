@@ -21,12 +21,14 @@ import lombok.RequiredArgsConstructor;
 public class ImageApiController {
 
 	private final ImageService imageService;
-	//private final LikesService likesService;
+	
 	
 	@GetMapping("/api/image")
 	public ResponseEntity<?> imageStory(@AuthenticationPrincipal PrincipalDetails principalDetails, @PageableDefault(size=3) Pageable pageable){
 		Page<Image> images = imageService.이미지스토리(principalDetails.getUser().getId(), pageable);
-		return new ResponseEntity<>(new CMRespDto<>(1,"성공", images), HttpStatus.OK);
+		return new ResponseEntity<>(new CMRespDto<>(1,"성공dd", images), HttpStatus.OK);
 	}
+	
+	
 	
 }
