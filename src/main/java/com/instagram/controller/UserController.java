@@ -28,6 +28,7 @@ public class UserController {
 	
 	@GetMapping("/user/{id}/update")
 	public String updateForm(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		System.out.println("@@@@@ 세션정보 : " + principalDetails.getUser());
 		return "user/update";
 	}
 }

@@ -53,7 +53,7 @@ public class UserService {
 		return userEntity;
 	}
 	
-	
+	@Transactional(readOnly = true)
 	public UserProfileDto 회원프로필(int pageUserId, int principalId) {
 		UserProfileDto dto = new UserProfileDto();
 		

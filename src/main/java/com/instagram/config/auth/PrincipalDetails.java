@@ -69,6 +69,18 @@ public class PrincipalDetails implements UserDetails  {
 		return true;
 	}
 	
+	public Map<String, Object> getAttributes() {
+		return attributes;  // {id:343434343, name: , email:ssarmango@nate.com}
+	}
+
+	
+	public String getName() {
+		// TODO Auto-generated method stub
+		return (String) attributes.get("name");
+	}
+	
+	
+	
 
 	
 }
