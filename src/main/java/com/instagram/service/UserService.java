@@ -49,6 +49,7 @@ public class UserService {
 		User userEntity = userRepository.findById(principalId).orElseThrow(()->{
 			return new CustomApiException("유저를 찾을 수 없습니다.");
 		});
+		userEntity.setProfileImageUrl(imageFileName);
 				
 		return userEntity;
 	}
