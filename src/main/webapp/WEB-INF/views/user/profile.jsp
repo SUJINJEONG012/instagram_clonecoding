@@ -17,7 +17,7 @@
 					<input type="file" name="profileImageFile" style="display: none;"
 						id="userProfileImageInput" />
 				</form>
-
+				
 				<img class="profile-image" src="/upload/${dto.user.profileImageUrl}"
 					onerror="this.src='/images/person.jpeg'" id="userProfileImage" />
 					
