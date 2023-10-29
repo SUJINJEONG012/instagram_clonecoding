@@ -52,6 +52,7 @@ public class User {
 	private String name;
 	private String website;
 	private String bio; //자기소개
+	@Column(nullable = false)
 	private String email;
 	private String phone;
 	private String gender;
