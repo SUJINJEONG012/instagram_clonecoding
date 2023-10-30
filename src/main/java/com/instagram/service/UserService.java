@@ -16,6 +16,7 @@ import com.instagram.entity.User;
 import com.instagram.handler.CustomApiException;
 import com.instagram.handler.CustomException;
 import com.instagram.handler.CustomValidationApiException;
+import com.instagram.repository.SubscribeRepository;
 import com.instagram.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 
 	private final UserRepository userRepository;
+	private final SubscribeRepository subscribeRepository;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	
@@ -67,7 +69,17 @@ public class UserService {
 		dto.setPageOwnerState(pageUserId == principalId);
 		dto.setImageCount(userEntity.getImages().size());
 		
+		int subscribeStatus =  subscribeRepository.mSubscribeState(principalId, pageUserId);
+		int subscribeCount = subscribeRepository.mSubscribeCount(pageUserId);
 		
+		dto.setSubscribeStatus(subscribeStatus == 1);
+		dto.setSubscribeCount(subscribeCount);
+		
+		// 좋아요 카운트 추가하기
+		userEntity.getImages().forEach((image)->{
+			image.setLikeCount(image.getLikes().size());
+		});
+				
 		return dto;
 	}
 	
