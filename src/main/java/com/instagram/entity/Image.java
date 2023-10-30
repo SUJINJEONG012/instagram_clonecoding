@@ -41,7 +41,7 @@ public class Image {
 	private User user;
 	
 	//이미지 좋아요
-	@JsonIgnoreProperties({"images"})
+	@JsonIgnoreProperties({"image"})
 	@OneToMany(mappedBy = "image")
 	private List<Likes> likes;
 	

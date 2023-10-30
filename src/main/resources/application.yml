@@ -34,8 +34,8 @@ spring:
       password: 1234  
 
 
-file:
- path: C:/STS4/upload/
-
 #file:
-#  path: /Users/jeongsujin/upload/
+# path: C:/STS4/upload/
+
+file:
+  path: /Users/jeongsujin/upload/

@@ -30,6 +30,7 @@ public class Subscribe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@JoinColumn(name="fromUserId")
 	@ManyToOne
 	private User fromUser;
