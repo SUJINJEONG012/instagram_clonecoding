@@ -104,6 +104,5 @@ public class UserService {
 				userEntity.setGender(user.getGender());
 				return userEntity;
 		}
-
-
+	
 }
