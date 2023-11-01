@@ -46,7 +46,7 @@ public class Image {
 	private List<Likes> likes;
 	
 	//댓글
-	@OrderBy("id desc")
+	@OrderBy("id DESC")
 	@JsonIgnoreProperties({"image"})
 	@OneToMany(mappedBy = "image")
 	private List<Comment> comments;
