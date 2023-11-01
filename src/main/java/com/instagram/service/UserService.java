@@ -82,9 +82,6 @@ public class UserService {
 				
 		return dto;
 	}
-	
-	
-	
 
 	@Transactional
 	public User 회원수정(int id, User user) {

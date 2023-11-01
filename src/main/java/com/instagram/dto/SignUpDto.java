@@ -37,7 +37,6 @@ public class SignUpDto {
 				.password(password)
 				.email(email)
 				.name(name)
-				.role("ROLE_USER")
 				.build();
 	}
 	
