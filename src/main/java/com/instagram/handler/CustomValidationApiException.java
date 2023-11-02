@@ -13,6 +13,10 @@ public class CustomValidationApiException extends RuntimeException{
 	
 	public CustomValidationApiException(String message) {
 		super(message);
+	}
+	
+	public CustomValidationApiException(String message, Map<String, String> errorMap) {
+		super(message);
 		this.errorMap =  errorMap;
 	}
 	

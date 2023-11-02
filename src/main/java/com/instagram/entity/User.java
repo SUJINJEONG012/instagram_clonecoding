@@ -12,10 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 
-import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -74,8 +72,7 @@ public class User {
 	@JsonIgnoreProperties({"user"})
 	private List<Image> images; //양방향 매핑
 	
-	
-	@CreationTimestamp
+
 	private LocalDateTime createDate;
 	
 	@PrePersist

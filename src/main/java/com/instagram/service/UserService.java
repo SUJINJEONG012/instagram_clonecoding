@@ -76,18 +76,21 @@ public class UserService {
 		dto.setSubscribeCount(subscribeCount);
 		
 		// 좋아요 카운트 추가하기
-//		userEntity.getImages().forEach((image)->{
-//			image.setLikeCount(image.getLikes().size());
-//		});
+		userEntity.getImages().forEach((image)->{
+			image.setLikeCount(image.getLikes().size());
+		});
 				
 		return dto;
 	}
 
-	@Transactional
+	@Transactional	
 	public User 회원수정(int id, User user) {
 		//1. 영속화
 		//1. 무조건 찾았다. 걱정마 get() 2. 못찾았어 익센션 발동시킬께
-		User userEntity = userRepository.findById(id).orElseThrow(()->{return new CustomValidationApiException("찾을 수 없는 id 입니다.");});
+		User userEntity = userRepository.findById(id).orElseThrow(() -> {
+					return new CustomValidationApiException("찾을 수 없는 id 입니다.");
+					});
+		
 		// 2. 영속화된 오브젝트를 수정 - 더티체킹 (업데이트 완료)
 				userEntity.setName(user.getName());
 				
