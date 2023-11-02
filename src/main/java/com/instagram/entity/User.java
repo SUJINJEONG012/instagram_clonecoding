@@ -66,13 +66,13 @@ public class User {
 	private String role;
 	
 	/* 나는 연관관계의 주인이 아니다. 그러므로 테이블에 칼럼을 만들지마
-	 * User를 select할 때 해당 user id로 등록된  image들을 다 가져와.
+	 * User를 select할 때 해당 user id로 등록된 image들을 다 가져와.
 	 * Lazy = 
 	 * Eager =
 	 * .*/
 	@OneToMany(mappedBy ="user", fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"user"})
-	private List<Image> images;
+	private List<Image> images; //양방향 매핑
 	
 	
 	@CreationTimestamp
@@ -87,7 +87,7 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", website="
 				+ website + ", bio=" + bio + ", email=" + email + ", phone=" + phone + ", gender=" + gender
-				+ ", profileImage=" + profileImageUrl + ", role=" + role +", createDate="
+				+ ", profileImageUrl=" + profileImageUrl + ", role=" + role +", createDate="
 				+ createDate + "]";
 	}
 	

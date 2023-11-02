@@ -10,11 +10,11 @@ import com.instagram.entity.Likes;
 public interface LikesRepository extends JpaRepository<Likes, Integer>{
 
 	@Modifying
-	@Query(value= "insert into likes(imageId, userId, createDate) values(:imageId, :principalId, now())", nativeQuery = true)
+	@Query(value= "insert into Likes(imageId, userId, createDate) values(:imageId, :principalId, now())", nativeQuery = true)
 	int mLikes(@Param("imageId") int imageId, @Param("principalId") int principalId);
 	
 	@Modifying
-	@Query(value = "delete from likes where imageId = :imageId AND userId = :principalId", nativeQuery = true)
+	@Query(value = "delete from Likes where imageId = :imageId AND userId = :principalId", nativeQuery = true)
 	int mUnLikes(@Param("imageId") int imageId, @Param("principalId") int principalId);
 
 }

@@ -35,6 +35,7 @@ public class UserApiController {
 		return new ResponseEntity<>(new CMRespDto<>(1, "프로필사진 변경 성공", null), HttpStatus.OK);
 	}
 	
+
 	
 	@PutMapping("/api/user/{id}")
 	public CMRespDto<?> update(

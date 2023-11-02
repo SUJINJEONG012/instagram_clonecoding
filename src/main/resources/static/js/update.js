@@ -3,8 +3,8 @@ function update(userId, event) {
 	event.preventDefault(); // 폼태그 액션을 막기!!
 	
 	let data = $("#profileUpdate").serialize(); // key=value
-	
-	console.log(data);
+	alert(data);
+//	console.log(data);
 	
 	$.ajax({
 		type: "put",
