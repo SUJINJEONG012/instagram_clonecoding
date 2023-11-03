@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class LikeService {
+public class LikesService {
 
 	private final LikesRepository likesRepository;
 	

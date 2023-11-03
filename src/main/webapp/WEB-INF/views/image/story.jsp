@@ -11,6 +11,8 @@
  </section>
 </main>
 
-<script src="/js/story.js"></script>
+<script src="/js/story.js" ></script>
+<%@ include file="../layout/footer.jsp" %>
+
 </body>
 </html>

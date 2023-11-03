@@ -33,10 +33,12 @@
 
 <body>
 	
-	<!-- principalId 담아두는 곳 -->
+
 	<input type="hidden" id="principalId" value="${principal.user.id}" />
 	
 	<header class="header">
+		<!-- principalId 담아두는 곳 -->
+	
 		<div class="container">
 			<a href="/" class="logo">
 				<img src="/images/logo.jpg" alt="">
