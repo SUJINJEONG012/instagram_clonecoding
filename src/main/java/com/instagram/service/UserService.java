@@ -58,6 +58,7 @@ public class UserService {
 	
 	@Transactional(readOnly = true)
 	public UserProfileDto 회원프로필(int pageUserId, int principalId) {
+		
 		UserProfileDto dto = new UserProfileDto();
 		
 		//select  * from image where userId = :userId;
@@ -69,9 +70,15 @@ public class UserService {
 		dto.setPageOwnerState(pageUserId == principalId);
 		dto.setImageCount(userEntity.getImages().size());
 		
+		
 		int subscribeStatus =  subscribeRepository.mSubscribeState(principalId, pageUserId);
 		int subscribeCount = subscribeRepository.mSubscribeCount(pageUserId);
 		
+		System.out.println("subscribeStatus : " +  subscribeStatus);
+		System.out.println("subscribeCount : " +  subscribeCount);
+		
+		System.out.println("pageUserId : " +  pageUserId);
+		//dto에 구독정보 담기
 		dto.setSubscribeStatus(subscribeStatus == 1);
 		dto.setSubscribeCount(subscribeCount);
 		
