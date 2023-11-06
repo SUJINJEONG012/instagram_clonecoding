@@ -30,11 +30,11 @@ public class SubscribeService {
 		// 쿼리 준비
 		StringBuffer sb = new StringBuffer();
 		sb.append("SELECT u.id, u.username, u.profileImageUrl, ");
-		sb.append("if ((SELECT 1 FROM Subscribe WHERE fromUserId = ? AND toUserId = u.id), 1, 0) subscribeState, ");
-		sb.append("if ((?=u.id), 1, 0) equalUserState ");
+		sb.append("if ((SELECT 1 FROM Subscribe WHERE fromUserId = 3 AND toUserId = u.id), 1, 0) subscribeState, ");
+		sb.append("if ((3 = u.id), 1, 0) equalUserState ");
 		sb.append("FROM User u INNER JOIN Subscribe s ");
 		sb.append("ON u.id = s.toUserId ");
-		sb.append("WHERE s.fromUserId = ?"); // 세미콜론 첨부하면 안됨
+		sb.append("WHERE s.fromUserId = 1");
 		
 		// 1.물음표 principalId
 		// 2.물음표 principalId
@@ -43,7 +43,7 @@ public class SubscribeService {
 		// 쿼리 완성
 		Query query = em.createNativeQuery(sb.toString())
 				.setParameter(1, principalId)
-				.setParameter(2, principalId)
+				//.setParameter(2, principalId)
 				.setParameter(3, principalId);
 				
 		
