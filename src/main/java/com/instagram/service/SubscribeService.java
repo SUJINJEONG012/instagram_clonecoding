@@ -55,19 +55,19 @@ public class SubscribeService {
 	}
 	
 	
-//	@Transactional
-//	public void 구독하기(int fromUserId, int toUserId) {
-//		try {
-//			subscribeRepository.mSubscribe(fromUserId, toUserId);
-//		}catch(Exception e) {
-//			throw new CustomApiException("이미 구독을 하였습니다.");
-//		}	
-//	}
-//	
-//	@Transactional
-//	public void 구독취소하기(int fromUserId, int toUserId) {
-//		subscribeRepository.mSubscribe(fromUserId, toUserId);
-//	}
+	@Transactional
+	public void 구독하기(int fromUserId, int toUserId) {
+		try {
+			subscribeRepository.mSubscribe(fromUserId, toUserId);
+		}catch(Exception e) {
+			throw new CustomApiException("이미 구독을 하였습니다.");
+		}	
+	}
 	
+	@Transactional
+	public void 구독취소하기(int fromUserId, int toUserId) {
+		subscribeRepository.mSubscribe(fromUserId, toUserId);
+	}
+
 	
 }

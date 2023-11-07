@@ -33,11 +33,11 @@ public class Subscribe {
 	
 	@JoinColumn(name="fromUserId")
 	@ManyToOne
-	private User fromUser;
+	private User fromUser; //구독하는 사람
 	
 	@JoinColumn(name = "toUserId")
 	@ManyToOne
-	private User toUser;
+	private User toUser; //구독받는 사람
 	
 	private LocalDateTime createDate;
 	
