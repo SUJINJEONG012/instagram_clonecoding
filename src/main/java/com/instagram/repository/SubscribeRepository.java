@@ -7,6 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 import com.instagram.entity.Subscribe;
 
+/*
+ * : 은 변수를 바인드해서 넣겠다는 의미 
+ * */
 public interface SubscribeRepository extends JpaRepository<Subscribe, Integer> {
 
 	@Modifying // INSERT, DELETE, UPDATE 를 네이티브 쿼리로 작성하려면 해당 어노테이션 필요!!
