@@ -36,7 +36,7 @@
 					</c:when>
 					<c:otherwise>
 						<c:choose>
-							<c:when test="${dto.subscribeState}">
+							<c:when test="${dto.subscribeStatus}">
 								<button class="cta blue" onclick="toggleSubscribe(${dto.user.id}, this)">구독취소</button>
 							</c:when>
 							<c:otherwise>
@@ -133,7 +133,6 @@
 		</div>
 
 		<div class="subscribe-list" id="subscribeModalList">
-
 
 			
 		</div>
