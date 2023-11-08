@@ -32,8 +32,7 @@ public class AuthController {
 	public String signupForm() {
 		return "auth/signup";
 	}
-	
-	
+
 	
 //	//로그인실패시
 //	@GetMapping("/auth/failed")

@@ -3,7 +3,7 @@ function update(userId, event) {
 	event.preventDefault(); // 폼태그 액션을 막기!!
 	
 	let data = $("#profileUpdate").serialize(); // key=value
-	alert(data);
+	//alert(data);
 //	console.log(data);
 	
 	$.ajax({
@@ -16,11 +16,10 @@ function update(userId, event) {
 		console.log("성공", res);
 		location.href = `/user/${userId}`;
 	}).fail(error=>{ // HttpStatus 상태코드 200번대가 아닐 때
-		/*if(error.data == null){
+		if(error.data == null){
 			alert(error.responseJSON.message);
 		}else{
 			alert(JSON.stringify(error.responseJSON.data));	
-		}*/
-		return null;	
+		}
 	});
 }

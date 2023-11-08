@@ -33,7 +33,7 @@ public class Comment {
 	@Column(length =100, nullable= false)
 	private String content;
 	
-	@JsonIgnoreProperties({"images"})
+	@JsonIgnoreProperties({"Images"})
 	@JoinColumn(name="userId")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;

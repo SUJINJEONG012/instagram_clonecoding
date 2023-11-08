@@ -34,7 +34,6 @@ public class ImageApiController {
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공dd", images), HttpStatus.OK);
 	}
 	
-	
 	@PostMapping("/api/image/{imageId}/likes")
 	public ResponseEntity<?> likes(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails){
 		likesService.좋아요(imageId, principalDetails.getUser().getId());

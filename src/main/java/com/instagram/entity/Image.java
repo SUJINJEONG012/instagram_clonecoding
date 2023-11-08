@@ -45,11 +45,11 @@ public class Image {
 	@OneToMany(mappedBy = "image")
 	private List<Likes> likes;
 	
-	//댓글
-	@OrderBy("id DESC")
-	@JsonIgnoreProperties({"image"})
-	@OneToMany(mappedBy = "image")
-	private List<Comment> comments;
+//	//댓글
+//	@OrderBy("id DESC")
+//	@JsonIgnoreProperties({"image"})
+//	@OneToMany(mappedBy = "image")
+//	private List<Comment> comments;
 	
 	@Transient //db에 칼럼이 만들어지지 않는다.
 	private boolean likeState;

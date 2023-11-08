@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class CMRespDto<T> {
-
+	
 	private int code;
 	private String message;
 	private T data;
