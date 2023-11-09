@@ -2,6 +2,7 @@
 function update(userId, event) {
 	event.preventDefault(); // 폼태그 액션을 막기!!
 	
+	//serialize을 걸어주면 해당 태그가 가지고 있는 모든 input값을 찾아 낼 수 있다.
 	let data = $("#profileUpdate").serialize(); // key=value
 	//alert(data);
 //	console.log(data);
@@ -10,13 +11,14 @@ function update(userId, event) {
 		type: "put",
 		url : `/api/user/${userId}`,
 		data: data,
-		contentType: "application/x-www-form-urlencoded; charset=utf-8",
+		contentType: "application/x-www-form-urlencoded;charset=utf-8",
 		dataType: "json"
 	}).done(res=>{ // HttpStatus 상태코드 200번대
-		console.log("성공", res);
+		alert("성공", res);
 		location.href = `/user/${userId}`;
 	}).fail(error=>{ // HttpStatus 상태코드 200번대가 아닐 때
 		if(error.data == null){
+
 			alert(error.responseJSON.message);
 		}else{
 			alert(JSON.stringify(error.responseJSON.data));	

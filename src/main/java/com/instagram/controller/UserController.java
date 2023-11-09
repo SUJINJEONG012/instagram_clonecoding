@@ -18,6 +18,7 @@ public class UserController {
 
 	private final UserService userService;
 	
+	//프로필로 이동 , 세션정보를 들고 있어야 한다.
 	@GetMapping("/user/{pageUserId}")
 	public String profile(@PathVariable int pageUserId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails){
 	
@@ -27,6 +28,7 @@ public class UserController {
 		return "user/profile"; 
 	}
 	
+	//회원수정 페이지로 이동 -> 세션정보를 들고 있어야 한다.
 	@GetMapping("/user/{id}/update")
 	public String updateForm(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		//System.out.println("@@@@@ 세션정보 : " + principalDetails.getUser());

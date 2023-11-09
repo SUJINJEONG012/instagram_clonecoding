@@ -48,12 +48,8 @@ public class UserApiController {
 
 	
 	@PutMapping("/api/user/{id}")
-	public CMRespDto<?> update(
-		@PathVariable int id,
-		@Valid UserUpdateDto userUpdateDto,
-		BindingResult bindingResult, 
-		@AuthenticationPrincipal PrincipalDetails principalDetails){
-		
+	public CMRespDto<?> update( @PathVariable int id, @Valid UserUpdateDto userUpdateDto, BindingResult bindingResult,  @AuthenticationPrincipal PrincipalDetails principalDetails){
+		System.out.println("회원수정 userUpdateDto 받아오는지 확인 : " + userUpdateDto);
 		User userEntity = userService.회원수정(id, userUpdateDto.toEntity());
 		principalDetails.setUser(userEntity); //세션 정보 변경
 		return new CMRespDto<>(1, "회원수정완료", userEntity); // 응답시에 userEntity의 모든 getter 함수가 호출되고 json으로 파싱하여 응답한다.

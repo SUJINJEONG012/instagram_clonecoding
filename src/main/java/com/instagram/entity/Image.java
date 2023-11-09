@@ -38,7 +38,7 @@ public class Image {
 	@JsonIgnoreProperties({"images"})
 	@JoinColumn(name="userId")
 	@ManyToOne(fetch = FetchType.EAGER) //이미지를 select 하면 user정보를 같이 들고옴
-	private User user;
+	private User user; // 1, 1
 	
 	//이미지 좋아요
 	@JsonIgnoreProperties({"image"})

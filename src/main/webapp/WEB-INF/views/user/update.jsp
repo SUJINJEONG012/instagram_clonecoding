@@ -97,6 +97,7 @@
 			<!--프로필수정 form end-->
 		</article>
 	</section>
+	</main>
 
 <script src="/js/update.js"></script>
 

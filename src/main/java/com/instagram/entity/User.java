@@ -68,7 +68,7 @@ public class User {
 	 * Lazy = 
 	 * Eager =
 	 * .*/
-	@OneToMany(mappedBy ="user", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy ="user", fetch = FetchType.EAGER)
 	@JsonIgnoreProperties({"user"})
 	private List<Image> images; //양방향 매핑
 	
