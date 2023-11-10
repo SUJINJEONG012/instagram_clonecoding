@@ -16,7 +16,7 @@ import org.springframework.validation.FieldError;
 @Aspect
 public class ValidationAdvice {
 
-	@Around("execution(* com.cos.photogramstart.web.api.*Controller.*(..))")
+	@Around("execution(* com.instagram.controller.api.*Controller.*(..))")
 	public Object apiAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 
 		//System.out.println("web api 컨트롤러 =====================");
