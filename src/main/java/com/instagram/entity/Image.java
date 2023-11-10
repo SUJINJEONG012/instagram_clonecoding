@@ -40,12 +40,12 @@ public class Image {
 	@ManyToOne(fetch = FetchType.EAGER) //이미지를 select 하면 user정보를 같이 들고옴
 	private User user; // 1, 1
 	
-//	//이미지 좋아요
+	//이미지 좋아요
 //	@JsonIgnoreProperties({"image"})
 //	@OneToMany(mappedBy = "image")
 //	private List<Likes> likes;
 	
-//	//댓글
+	//댓글
 //	@OrderBy("id DESC")
 //	@JsonIgnoreProperties({"image"})
 //	@OneToMany(mappedBy = "image")

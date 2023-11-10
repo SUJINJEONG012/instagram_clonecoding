@@ -19,6 +19,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/*
+ * @Builder : builder 패턴으로 데이터를 담을 수 있게 해주는 어노테이션
+ * @AllArgsConstructor : 모든 생성자를 자등으로 만들어주는
+ * @NoArgsConstructor : 빈 생성자를 자동으로 만들어주는
+ * @Data : 자동으로 Getter, Setter, toString을 만들어주는 
+ * @Entity : DB에 테이블을 생성해주는 
+ * 
+ * */
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,12 +43,12 @@ public class Likes {
 	
 	@JoinColumn(name ="imageId")
 	@ManyToOne
-	private Image image;
+	private Image image; // 좋아요가 어떤 이미지인지
 	
 	@JsonIgnoreProperties({"images"})
 	@JoinColumn(name="userId")
 	@ManyToOne
-	private User user;
+	private User user; // 좋아요 누구 눌렀는지
 	
 	private LocalDateTime createDate;
 	
