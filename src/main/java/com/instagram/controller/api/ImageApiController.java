@@ -42,8 +42,7 @@ public class ImageApiController {
 	
 	@DeleteMapping("/api/image/{imageId}/likes")
 	public ResponseEntity<?> unLikes(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails){
-		likesService.좋아요취소(imageId, principalDetails.getUser().getI
-				d());
+		likesService.좋아요취소(imageId, principalDetails.getUser().getId());
 		return new ResponseEntity<>(new CMRespDto<>(1, "좋아요취소성공", null), HttpStatus.OK);
 	}
 	
