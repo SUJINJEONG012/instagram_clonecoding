@@ -47,19 +47,20 @@ function getStoryItem(image) {
 
 	<div class="sl__item__contents">
 		
-		<div class="sl__item__contents_icon">
+		<div class="sl__item__contents__icon">
 		 <button>`;
 		 
 		 if(image.likeState){
 			item += `<i class="fas fa-heart active" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>`; 
 		 }else{
-			 item += `<i class="fas fa-heart" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>`;
+			 item += `<i class="far fa-heart" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>`;
 		 }
 		 
 		 item += `
 		 </button>
 		</div>
-		<span class="like"><b id="storyLikeCount-1">3</b>Likes</span>
+		
+		<span class="like"><b id="storyLikeCount-${image.id}">${image.likeCount}</b>Likes</span>
 
 		<div class="sl__item__contents__content">
 			<p>${image.caption}</p>
@@ -74,10 +75,10 @@ function getStoryItem(image) {
 
 // 좋아요, 안좋아요
 function toggleLike(imageId){
-	let likeIcon = $('#storyLikeIcon-${imageId}');
+	let likeIcon = $(`#storyLikeIcon-${imageId}`);
 	
-	alert("클릭");
 	if(likeIcon.hasClass("far")){ // 좋아요 하겠다.
+	alert("좋아요하겠")
 		$.ajax({
 			type:"post",
 			url:`/api/image/${imageId}/likes`,
@@ -85,6 +86,7 @@ function toggleLike(imageId){
 		}).done(res =>{
 			let likeCountStr = $(`#storyLikeCount-${imageId}`).text();
 			let likeCount = Number(likeCountStr) + 1;
+			console.log("좋아요 카운트 증가", likeCountStr)
 			$(`#storyLikeCount-${imageId}`).text(likeCount);
 			likeIcon.addClass("fas");
 			likeIcon.addClass("active");
