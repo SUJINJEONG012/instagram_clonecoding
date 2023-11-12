@@ -48,14 +48,15 @@ function getStoryItem(image) {
 	<div class="sl__item__contents">
 		
 		<div class="sl__item__contents_icon">
-		 <button>
-		 `;if(image.likeState){
+		 <button>`;
+		 
+		 if(image.likeState){
 			item += `<i class="fas fa-heart active" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>`; 
 		 }else{
 			 item += `<i class="fas fa-heart" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>`;
 		 }
 		 
-		 item +=`
+		 item += `
 		 </button>
 		</div>
 		<span class="like"><b id="storyLikeCount-1">3</b>Likes</span>
@@ -75,6 +76,7 @@ function getStoryItem(image) {
 function toggleLike(imageId){
 	let likeIcon = $('#storyLikeIcon-${imageId}');
 	
+	alert("클릭");
 	if(likeIcon.hasClass("far")){ // 좋아요 하겠다.
 		$.ajax({
 			type:"post",
@@ -102,7 +104,7 @@ function toggleLike(imageId){
 			likeIcon.addClass("fas");
 			likeIcon.addClass("active");
 			likeIcon.removeClass("far");
-		 }).fail(error=>{
+		 }).fail(error => {
 			 console.log("오류", error);
 		 })
 	}
