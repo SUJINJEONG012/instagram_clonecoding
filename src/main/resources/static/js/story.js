@@ -82,7 +82,8 @@ function toggleLike(imageId){
 		$.ajax({
 			type:"post",
 			url:`/api/image/${imageId}/likes`,
-			dataType:"json"
+			dataType:"json",
+			
 		}).done(res =>{
 			let likeCountStr = $(`#storyLikeCount-${imageId}`).text();
 			let likeCount = Number(likeCountStr) + 1;
@@ -98,7 +99,8 @@ function toggleLike(imageId){
 		 $.ajax({
 			 type:"delete",
 			 url:`/api/image/${imageId}/likes`,
-			 dateType: "json"
+			 dateType: "json",
+			
 		 }).done(res =>{
 			 let likeCountStr = $(`#storyLikeCount-${imageId}`).text();
 			let likeCount = Number(likeCountStr) - 1;
