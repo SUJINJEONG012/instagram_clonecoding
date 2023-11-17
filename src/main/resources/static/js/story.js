@@ -23,6 +23,7 @@ function storyLoad() {
 			let storyItem = getStoryItem(image);
 			$("#storyList").append(storyItem);
 		});
+		
 	}).fail(error => {
 		console.log("오류", error);
 	});
@@ -87,7 +88,7 @@ function toggleLike(imageId){
 		}).done(res =>{
 			let likeCountStr = $(`#storyLikeCount-${imageId}`).text();
 			let likeCount = Number(likeCountStr) + 1;
-			console.log("좋아요 카운트 증가", likeCountStr)
+			alert("좋아요 카운트 증가", likeCountStr)
 			$(`#storyLikeCount-${imageId}`).text(likeCount);
 			likeIcon.addClass("fas");
 			likeIcon.addClass("active");
@@ -101,7 +102,7 @@ function toggleLike(imageId){
 			 url:`/api/image/${imageId}/likes`,
 			 dateType: "json"
 		 }).done(res =>{
-			 let likeCountStr = $(`#storyLikeCount-${imageId}`).text();
+			let likeCountStr = $(`#storyLikeCount-${imageId}`).text();
 			let likeCount = Number(likeCountStr) - 1;
 			$(`#storyLikeCount-${imageId}`).text(likeCount);
 			likeIcon.addClass("fas");

@@ -51,9 +51,11 @@ public class Image {
 //	@OneToMany(mappedBy = "image")
 //	private List<Comment> comments;
 	
+	//이미지 좋아요 여부 상태
 	@Transient //db에 칼럼이 만들어지지 않는다.
 	private boolean likeState;
 	
+	//이미지 좋아요 카운팅
 	@Transient
 	private int likeCount;
 	

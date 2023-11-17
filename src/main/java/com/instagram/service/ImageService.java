@@ -39,7 +39,8 @@ public class ImageService {
 		images.forEach((image ->{
 			image.setLikeCount(image.getLikes().size());
 			image.getLikes().forEach(like->{
-				if(like.getUser().getId() == principalId) { //해당 이미지에 좋아요한 사람을 찾아서 현재 로그인한사람이 좋아한것인지 비교
+				if(like.getUser().getId() == principalId) { 
+					//해당 이미지에 좋아요한 사람을 찾아서 현재 로그인한사람이 좋아한것인지 비교
 					image.setLikeState(true);
 				}
 			});
